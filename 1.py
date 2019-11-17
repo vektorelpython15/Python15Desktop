@@ -1,6 +1,9 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget,QPushButton,QLineEdit
+from PyQt5.QtWidgets import QApplication, QWidget,QPushButton, QLineEdit, QLabel
 from PyQt5.QtGui import QIcon
+from DB import DB
+
+
 class App(QWidget):
     def __init__(self):
         super().__init__()
@@ -28,15 +31,29 @@ class App(QWidget):
 
         self.txtBox = QLineEdit(self)
         self.txtBox.move(10,80)
+        self.txtBox.textChanged.connect(self.textControl)
+
+        self.lbl = QLabel(self)
+        self.lbl.move(10,100)
 
         self.show()
 
     def tiklandi(self):
-        print("Tıklandı ",self.sender().text())
-    
+        girilen =  self.txtBox.text()
+        if self.sender() is self.button:
+            self.lbl.setText(girilen)
+        elif self.sender() is self.button1:
+            self.lbl.setText(girilen*2)
+        elif self.sender() is self.button2:
+            self.lbl.setText(girilen*3)
+        self.lbl.adjustSize()
+        db = DB()
+        db.ekleme(self.lbl.text())
+
     def textControl(self):
         girilen = self.txtBox.text()
-        
+        girilen = girilen.upper()
+        self.txtBox.setText(girilen)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
