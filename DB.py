@@ -5,10 +5,10 @@ class DB():
         self.db = sql.connect(r"DB\FACEDET.db")
         self.cur = self.db.cursor()
 
-    
+
 
     def ekleme(self,yazi="Boş Geldi"):
-        query = "INSERT INTO PYQT5DENEME VALUES ('{}')"
+        query = " INSERT INTO PYQTDENEME (YAZI) VALUES ('{}')"
         query = query.format(yazi)
         self.cur.execute(query)
         self.db.commit()
