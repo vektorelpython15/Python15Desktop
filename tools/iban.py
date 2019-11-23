@@ -4,7 +4,7 @@ class DogrulamaTool():
         self.metin = metin
 
     def ibanDogrulama(self):
-        metin =  self.metin 
+        metin =  self.metin.replace(" ","") 
         if metin.isalnum():
             metin = metin[4:] + metin[:4]
             iban2 = ""
@@ -13,7 +13,6 @@ class DogrulamaTool():
                     iban2 += str(ord(kar)-55)
                 else:
                     iban2 += kar
-            print(len(iban2))
             a = iban2[:9]
             b = str(int(a)%97) +  iban2[9:18]
             c = str(int(b)%97) + iban2[18:]
