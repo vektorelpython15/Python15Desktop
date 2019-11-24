@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication,QMainWindow,QLineEdit
+from PyQt5.QtWidgets import QApplication,QMainWindow,QLineEdit,QMessageBox
 from PyQt5 import uic
 from DB import DB
 
@@ -12,13 +12,23 @@ class App(QMainWindow):
         self.win.show()
 
     def kaydet(self):
-        yazi = self.win.txtAd.text()
+        adi = self.win.txtAd.text()
+        soyadi = self.win.txtSoyad.text()
+        il = self.win.cmbIl.currentIndex()
+        ilce = self.win.cmbIlce.currentIndex()
+        if self.win.rdbKadin.isChecked():
+            cinsiyet = 0
+        elif self.win.rdbErkek.isChecked():
+            cinsiyet = 1
         db = DB()
-        if db.ekleme(yazi) :
-            self.win.lblSonuc.setText("Al rite")
+        if db.ekleme(adi,soyadi,il,ilce,cinsiyet):
+            elCevap =  QMessageBox.question(self,"Soru","Kaydetmek İster misin?",\
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel,\
+                    QMessageBox.Yes)
+            if elCevap == QMessageBox.Yes:
+                QMessageBox.information(self,"Bilgi","Kaydedildi!.")
         else:
-            self.win.lblSonuc.setText("Nope")
-        
+            QMessageBox.warning(self,"Hata","Hata Var!.")
     
     def ilDoldur(self):
         db = DB()
@@ -26,9 +36,19 @@ class App(QMainWindow):
         self.win.cmbIl.addItem("Seçiniz")
         for IlKod,IlAd in liste:
             self.win.cmbIl.addItem(IlAd)
+        
     
+    def ilceDoldur(self,il="1"):
+        db = DB()
+        liste  = db.ilceListele(il)
+        self.win.cmbIlce.clear()
+        self.win.cmbIlce.addItem("Seçiniz")
+        for IlceKod,IlceAd in liste:
+            self.win.cmbIlce.addItem(IlceAd)
+
+
     def tespit(self):
-        self.win.txtAd.setText(str(self.win.cmbIl.currentIndex()))
+        self.ilceDoldur(str(self.win.cmbIl.currentIndex()))
 
 if __name__ == '__main__':
     import sys

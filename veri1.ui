@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>240</width>
-    <height>320</height>
+    <width>329</width>
+    <height>559</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>211</width>
-      <height>241</height>
+      <width>311</width>
+      <height>231</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -58,13 +58,54 @@
      <item row="1" column="1">
       <widget class="QLineEdit" name="txtAd"/>
      </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="cmbIl"/>
-     </item>
      <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Soyadı:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="txtSoyad"/>
+     </item>
+     <item row="3" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>İl</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="cmbIl"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>İlçe</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="cmbIlce"/>
+     </item>
+     <item row="5" column="1">
+      <widget class="QRadioButton" name="rdbKadin">
+       <property name="text">
+        <string>Kadın</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QRadioButton" name="rdbErkek">
+       <property name="text">
+        <string>Erkek</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Cinsiyet</string>
        </property>
       </widget>
      </item>
@@ -73,8 +114,8 @@
    <widget class="QPushButton" name="btGonder">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>250</y>
+      <x>130</x>
+      <y>480</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -96,13 +137,24 @@
      <string/>
     </property>
    </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>250</y>
+      <width>311</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout"/>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>240</width>
+     <width>329</width>
      <height>18</height>
     </rect>
    </property>
