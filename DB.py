@@ -8,9 +8,13 @@ class DB():
 
 
     def ekleme(self,yazi="Boş Geldi"):
-        query = " INSERT INTO PYQTDENEME (YAZI) VALUES ('{}')"
-        query = query.format(yazi)
-        self.cur.execute(query)
-        self.db.commit()
-        self.db.close()
-        
+        try:
+            query = " INSERT INTO PYQTDENEME (YAZI) VALUES ('{}')"
+            query = query.format(yazi)
+            self.cur.execute(query)
+            self.db.commit()
+            return True
+        except:
+            return False
+        finally:
+            self.db.close()
