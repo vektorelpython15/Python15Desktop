@@ -1,3 +1,11 @@
 {
-    "python.pythonPath": "c:\\ProgramData\\Anaconda3\\envs\\masaustu\\python.exe"
+    "python.pythonPath": "c:\\ProgramData\\Anaconda3\\envs\\masaustu\\python.exe",
+    "sqltools.connections": [
+        {
+            "database": "${workspaceFolder}\\DB/FACEDET.db",
+            "dialect": "SQLite",
+            "name": "face"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
 }
