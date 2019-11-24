@@ -6,8 +6,9 @@ class App(QMainWindow):
     def __init__(self):
         super().__init__()
         self.win = uic.loadUi("veri1.ui")
+        self.ilDoldur()
         self.win.btGonder.clicked.connect(self.kaydet)
-        #### Bu kısım düğmeye fonksiyonun atanacağı kısım
+        self.win.cmbIl.currentIndexChanged.connect(self.tespit)
         self.win.show()
 
     def kaydet(self):
@@ -17,9 +18,17 @@ class App(QMainWindow):
             self.win.lblSonuc.setText("Al rite")
         else:
             self.win.lblSonuc.setText("Nope")
-        # veri tabanı fonksiyonu üzerinden txt içine yazılmış 
-        # verinin kaydedilmesi
-        # olumlu yanıtın ekrana yansıtılması
+        
+    
+    def ilDoldur(self):
+        db = DB()
+        liste  = db.ilListele()
+        self.win.cmbIl.addItem("Seçiniz")
+        for IlKod,IlAd in liste:
+            self.win.cmbIl.addItem(IlAd)
+    
+    def tespit(self):
+        self.win.txtAd.setText(str(self.win.cmbIl.currentIndex()))
 
 if __name__ == '__main__':
     import sys
